@@ -21,7 +21,7 @@ export default function ChatPanel({ sessionId }) {
       const data = await response.json();
       const reply = data.reply || JSON.stringify(data, null, 2);
       setMessages([...newMessages, { role: 'assistant', content: reply }]);
-    } catch (err) {
+    } catch {
       setMessages([...newMessages, { role: 'assistant', content: '⚠️ Error connecting to bridge.' }]);
     } finally {
       setLoading(false);
@@ -29,19 +29,39 @@ export default function ChatPanel({ sessionId }) {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-y-auto space-y-2 p-4">
+    <div className="flex flex-col border-r h-full bg-white">
+      <div className="flex-none p-4 text-xl font-semibold border-b bg-gray-50">🔥 Council Fire HAIOS</div>
+      <div className="flex-1 overflow-y-auto p-4 space-y-2">
         {messages.map((msg, idx) => (
-          <div key={idx} className={`p-3 rounded shadow-sm ${msg.role === 'user' ? 'bg-blue-100 self-end text-right' : 'bg-green-100 self-start text-left'}`}>
-            <div className="text-xs text-gray-500 mb-1">{msg.role}</div>
-            <div>{msg.content}</div>
+          <div
+            key={idx}
+            className={
+              "p-3 rounded-lg max-w-xl whitespace-pre-wrap " +
+              (msg.role === 'user'
+                ? 'bg-blue-100 self-end text-right'
+                : 'bg-green-100 self-start text-left')
+            }
+          >
+            <div className="text-xs text-gray-500">{msg.role}</div>
+            {msg.content}
           </div>
         ))}
-        {loading && <div className="text-gray-400 text-sm">Assistant is typing...</div>}
+        {loading && <div className="text-sm text-gray-400">Assistant is typing...</div>}
       </div>
-      <div className="p-3 border-t flex gap-2">
-        <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && sendMessage()} className="flex-1 border rounded p-2" placeholder="Type a message..." />
-        <button onClick={sendMessage} className="bg-blue-500 text-white px-4 rounded hover:bg-blue-600">Send</button>
+      <div className="flex-none p-4 border-t flex gap-2">
+        <input
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && sendMessage()}
+          className="flex-1 border rounded px-3 py-2"
+          placeholder="Ask or instruct..."
+        />
+        <button
+          onClick={sendMessage}
+          className="bg-blue-600 text-white px-4 rounded hover:bg-blue-700"
+        >
+          Send
+        </button>
       </div>
     </div>
   );
