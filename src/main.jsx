@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ChatPanel from './ChatPanel';
-import RightPanel from './RightPanel';
 import './index.css';
 
 function App() {
-  const [sessionId] = useState(() => "default");
-
   return (
-    <div className="grid grid-cols-2 h-screen">
-      <ChatPanel sessionId={sessionId} />
-      <RightPanel sessionId={sessionId} />
+    <div className="h-screen flex items-center justify-center text-center text-gray-700">
+      <div>
+        <h1 className="text-2xl font-bold mb-2">ShadCN Console UI</h1>
+        <p>This is the starter shell. Next: real components!</p>
+      </div>
     </div>
   );
 }
