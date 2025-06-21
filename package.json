@@ -1,5 +1,5 @@
 {
-  "name": "council-fire-ha-ios",
+  "name": "council-fire-kit-ui",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "clsx": "^1.2.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
