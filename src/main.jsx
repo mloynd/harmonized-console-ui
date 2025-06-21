@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import Chat from './components/Chat'
-import RightPanel from './components/RightPanel'
+import Chat from './components/Chat.jsx'
+import RightPanel from './components/RightPanel.jsx'
 
 function App() {
   return (
