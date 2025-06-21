@@ -33,7 +33,7 @@ export default function ChatPanel({ sessionId }) {
       <div className="flex-none p-4 text-xl font-semibold border-b bg-gray-50">🔥 Council Fire HAIOS</div>
       <div className="flex-1 overflow-y-auto p-4 space-y-2">
         {messages.map((msg, idx) => (
-          <div key={idx} className={\`p-3 rounded-lg max-w-xl whitespace-pre-wrap \${msg.role === 'user' ? 'bg-blue-100 self-end text-right' : 'bg-green-100 self-start text-left'}\`}>
+          <div key={idx} className={`p-3 rounded-lg max-w-xl whitespace-pre-wrap ${msg.role === 'user' ? 'bg-blue-100 self-end text-right' : 'bg-green-100 self-start text-left'}`}>
             <div className="text-xs text-gray-500">{msg.role}</div>
             {msg.content}
           </div>
